@@ -21,10 +21,10 @@ def clone_repo(repo_url, base_dir="repos"):
     repo_name = repo_url.split("/")[-1]
     repo_path = os.path.join(base_dir, repo_name)
     if not os.path.exists(repo_path):
-        print(f"⬇️ Cloning {repo_name}...")
+        print(f"Cloning {repo_name}...")
         subprocess.run(["git", "clone", "--depth", "1", repo_url, repo_path])
     else:
-        print(f"✅ Repo already exists: {repo_name}")
+        print(f"Repo already exists: {repo_name}")
     return repo_path
 
 # --- Extract function/class snippets ---
@@ -125,7 +125,7 @@ def save_json_to_csv(json_file, csv_file):
         for idx, item in enumerate(data, start=1):
             writer.writerow([idx, item["snippet"].replace("\n", "\\n"), item["label"]])
 
-    print(f"✅ Kaggle-ready CSV saved to {csv_file}")
+    print(f"Kaggle-ready CSV saved to {csv_file}")
 
 
 # --- Run for all repos ---
@@ -138,6 +138,6 @@ if __name__ == "__main__":
     with open(json_file, "w", encoding="utf-8") as f:
         json.dump(all_data, f, indent=4)
 
-    print(f"✅ Total snippets collected: {len(all_data)}")
+    print(f"Total snippets collected: {len(all_data)}")
     # --- Save CSV for Kaggle ---
     save_json_to_csv(json_file, "dataset_realistic_bug.csv")
